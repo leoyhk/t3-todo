@@ -8,13 +8,14 @@ generator client {
 datasource db {
     provider = "postgresql"
     url      = env("DATABASE_URL")
+    directUrl = env("DIRECT_URL")
 }
 
-model Post {
-    id        Int      @id @default(autoincrement())
-    name      String
+model Todo {
+    id        String @id @default(cuid())
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
+    
+    title      String
 
-    @@index([name])
 }
