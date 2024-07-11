@@ -1,11 +1,22 @@
 "use client";
-import { useState } from "react";
 
-export function LatestPost() {
-  const [name, setName] = useState("");
+import { Todo } from "./const";
+import { TodoItem } from "./todoItem";
 
+type Props = {
+  todos: Todo[];
+};
+export function TodoList(props: Props) {
+  const { todos } = props;
   return (
-    <div className="w-full max-w-xs">
+    <div className="h-24 w-full max-w-xs">
+      {todos.length > 0 ? (
+        todos.map((todo: Todo) => {
+          return <TodoItem title={todo.title} />;
+        })
+      ) : (
+        <div className="h-24 bg-black">No Todos Yet!</div>
+      )}
       {/* {latestPost ? (
         <p className="truncate">Your most recent post: {latestPost.name}</p>
       ) : (
