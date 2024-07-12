@@ -1,28 +1,21 @@
 "use client";
-
-import { api } from "~/trpc/react";
-import { TodoList } from "./todoList";
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  DialogTrigger,
+} from "~/components/ui/dialog";
 
 type Props = {};
 export function TodoCreationDialog(props: Props) {
-  //@todo change to infinite query
-  const { data: todos = [], isLoading: listLoading } = api.todo.all.useQuery();
-  const todoListContent = () => {
-    if (listLoading) {
-      return <div>Loading...</div>;
-    }
-
-    if (!todos) {
-      return <div>Error</div>;
-    }
-    return <TodoList todos={todos} />;
-  };
   return (
-    <div className="w-full max-w-xs">
-      {/* Todo Creation */}
-
-      {/* Todo List */}
-      {todoListContent()}
-    </div>
+    <Dialog>
+      <DialogTrigger>Add Todo</DialogTrigger>
+      <DialogContent>
+        <div className="flex flex-col space-y-4">
+          <DialogTitle className="text-center">Create a Dialog</DialogTitle>
+        </div>
+      </DialogContent>
+    </Dialog>
   );
 }

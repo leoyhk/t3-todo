@@ -2,6 +2,7 @@
 
 import { api } from "~/trpc/react";
 import { TodoList } from "./todoList";
+import { TodoCreationDialog } from "./todoCreationDialog";
 
 type Props = {};
 export function TodoSection(props: Props) {
@@ -18,9 +19,9 @@ export function TodoSection(props: Props) {
     return <TodoList todos={todos} />;
   };
   return (
-    <div className="w-full max-w-xs">
+    <div className="flex w-full max-w-xs flex-col">
       {/* Todo Creation */}
-
+      <TodoCreationDialog />
       {/* Todo List */}
       {todoListContent()}
     </div>
