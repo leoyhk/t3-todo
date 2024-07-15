@@ -1,3 +1,4 @@
+import { z } from "zod";
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 
 export const todoRouter = createTRPCRouter({
@@ -9,4 +10,19 @@ export const todoRouter = createTRPCRouter({
     });
     return todos;
   }),
+  add: publicProcedure
+    .input(
+      z.object({
+        title: z.string(),
+      }),
+    )
+    .mutation(async ({ ctx, input }) => {
+      const { title } = input;
+      const addedTodo = await ctx.db.todo.create({
+        data: {
+          title: title,
+        },
+      });
+      return addedTodo;
+    }),
 });
