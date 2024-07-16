@@ -6,7 +6,7 @@ import { cn } from "~/lib/utils";
 type ToasterProps = ComponentProps<typeof ReactHotToaster>;
 
 export function Toaster(props: ToasterProps) {
-  const { position = "bottom-left", toastOptions = {} } = props;
+  const { position = "bottom-left", toastOptions = {}, ...restprops } = props;
   return (
     <ReactHotToaster
       position={position}
@@ -17,8 +17,9 @@ export function Toaster(props: ToasterProps) {
           toastOptions.className,
         ),
       }}
+      {...restprops}
     >
-      {(t) => <ToastBar toast={t} />}
+      {(t) => <ToastBar toast={t} style={{ maxWidth: "100%" }} />}
     </ReactHotToaster>
   );
 }
