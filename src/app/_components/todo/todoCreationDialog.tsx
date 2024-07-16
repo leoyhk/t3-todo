@@ -44,7 +44,9 @@ export function TodoCreationDialog(props: Props) {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger>Add Todo</DialogTrigger>
+      <DialogTrigger>
+        <Button className="w-full bg-blue-700">Add Todo</Button>
+      </DialogTrigger>
       <DialogContent>
         <div className="flex flex-col space-y-4">
           <DialogTitle className="text-center">Create a Dialog</DialogTitle>
