@@ -1,8 +1,8 @@
 "use client";
-
 import { api } from "~/trpc/react";
-import { TodoList } from "./todoList";
-import { TodoCreationDialog } from "./todoCreationDialog";
+import { TodoCreationDialog } from "./TodoCreationDialog";
+import { columns } from "./table/columns";
+import { DataTable } from "~/components/ui/data-table";
 
 type Props = {};
 export function TodoSection(props: Props) {
@@ -16,7 +16,7 @@ export function TodoSection(props: Props) {
     if (!todos) {
       return <div>Error</div>;
     }
-    return <TodoList todos={todos} />;
+    return <DataTable columns={columns} data={todos} />;
   };
   return (
     <div className="flex w-full max-w-xs flex-col">

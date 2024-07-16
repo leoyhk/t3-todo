@@ -2,12 +2,14 @@
 
 import { Todo } from "~/app/_components/todo/const";
 
-type Props = {};
-export function TodoItem(props: Todo) {
-  const { title } = props;
+type ItemProps = {
+  todo: Todo;
+};
+export function TodoItem(props: ItemProps) {
+  const { todo } = props;
   return (
     <div className="w-full max-w-xs">
-      <div>{title}</div>
+      <div>{todo.title}</div>
       {/* {latestPost ? (
         <p className="truncate">Your most recent post: {latestPost.name}</p>
       ) : (
