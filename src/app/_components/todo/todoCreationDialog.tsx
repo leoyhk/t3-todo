@@ -21,10 +21,12 @@ export function TodoCreationDialog(props: Props) {
   const { mutate: createTodo, isPending } = api.todo.add.useMutation({
     onSuccess: () => {
       utils.todo.invalidate();
-      toast.success("Successfully Added Todo");
+      toast.success("Successfully added todo.");
       setOpen(false);
     },
-    onError: () => {},
+    onError: () => {
+      toast.error("Action failed, please try again later.");
+    },
   });
   const form = useForm({
     resolver: zodResolver(todoFormSchema),
