@@ -13,15 +13,18 @@ import { Todo, todoFormSchema } from "./const";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { api } from "~/trpc/react";
 import toast from "react-hot-toast";
+import { Spinner } from "~/components/spinner";
 
 type Props = {};
 export function TodoCreationDialog(props: Props) {
   const utils = api.useUtils();
-  const { mutate: createTodo } = api.todo.add.useMutation({
+  const { mutate: createTodo, isPending } = api.todo.add.useMutation({
     onSuccess: () => {
       utils.todo.invalidate();
-      toast.success("yeah");
+      toast.success("Successfully Added Todo");
+      setOpen(false);
     },
+    onError: () => {},
   });
   const form = useForm({
     resolver: zodResolver(todoFormSchema),
@@ -33,7 +36,6 @@ export function TodoCreationDialog(props: Props) {
     if (form.formState.isValid) {
       const formInputs = form.getValues() as Todo;
       createTodo(formInputs);
-      // @todo reset after query
       form.reset({ title: "" });
     }
   };
@@ -50,7 +52,7 @@ export function TodoCreationDialog(props: Props) {
           onClick={onSubmit}
           disabled={!(form.formState.isDirty && form.formState.isValid)}
         >
-          Submit
+          {isPending ? <Spinner /> : "Submit"}
         </Button>
       </DialogContent>
     </Dialog>
