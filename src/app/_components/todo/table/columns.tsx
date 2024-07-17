@@ -1,5 +1,6 @@
 import { Todo } from "../const";
 import { ColumnDef } from "@tanstack/react-table";
+import TimeAgo from "react-timeago";
 
 export const columns: ColumnDef<Todo>[] = [
   {
@@ -12,9 +13,13 @@ export const columns: ColumnDef<Todo>[] = [
     header: "Todo",
   },
   {
-    id: "createdAt",
+    accessorKey: "createdAt",
     header: "Created",
-    accessorFn: (row) => row.createdAt,
+    cell: ({ row }) => {
+      return (
+        <TimeAgo date={row.getValue("createdAt") as Date} locale="en-US" />
+      );
+    },
   },
   {
     accessorKey: "remarks",
