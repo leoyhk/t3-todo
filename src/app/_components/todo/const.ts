@@ -1,11 +1,7 @@
 import { z } from "zod";
+import { RouterOutputs } from "~/trpc/react";
 
-export type Todo = {
-  id: string;
-  title: string;
-  createdAt: Date;
-  updatedAt: Date;
-};
+export type Todo = RouterOutputs["todo"]["all"][number];
 
 export const todoFormSchema = z.object({
   title: z.string().min(2, {

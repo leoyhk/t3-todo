@@ -3,11 +3,21 @@ import { ColumnDef } from "@tanstack/react-table";
 
 export const columns: ColumnDef<Todo>[] = [
   {
-    id: "createdAt",
-    accessorFn: (row) => row.createdAt,
+    accessorKey: "status",
+    header: "Status",
   },
+
   {
     accessorKey: "title",
     header: "Todo",
+  },
+  {
+    id: "createdAt",
+    header: "Created",
+    accessorFn: (row) => row.createdAt,
+  },
+  {
+    accessorKey: "remarks",
+    header: "Remarks",
   },
 ];

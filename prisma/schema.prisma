@@ -11,11 +11,15 @@ datasource db {
     directUrl = env("DIRECT_URL")
 }
 
+
+
 model Todo {
     id        String @id @default(cuid())
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
     
     title      String
+    completeStatus Boolean @default(false)  
+    remarks    String?
 
 }
