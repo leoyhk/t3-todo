@@ -5,11 +5,11 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "~/components/ui/dialog";
-import { TodoCreationForm } from "./form/TodoCreationForm";
+import { TodoCreationForm } from "../form/TodoCreationForm";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { Button } from "~/components/ui/button";
-import { Todo, todoFormSchema } from "./const";
+import { Todo, todoFormSchema } from "../const";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { api } from "~/trpc/react";
 import toast from "react-hot-toast";

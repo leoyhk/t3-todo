@@ -1,6 +1,6 @@
 "use client";
 import { api } from "~/trpc/react";
-import { TodoCreationDialog } from "./TodoCreationDialog";
+import { TodoCreationDialog } from "./dialog/TodoCreationDialog";
 import { columns } from "./table/columns";
 import { DataTable } from "~/components/ui/data-table";
 

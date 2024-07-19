@@ -1,7 +1,8 @@
 import { Todo } from "../const";
 import { ColumnDef } from "@tanstack/react-table";
 import TimeAgo from "react-timeago";
-import { TodoEditDialog } from "../TodoEditDialog";
+import { TodoEditDialog } from "../dialog/TodoEditDialog";
+import { TodoDeletionDialog } from "../dialog/TodoDeletionDialog";
 
 export const columns: ColumnDef<Todo>[] = [
   {
@@ -30,7 +31,12 @@ export const columns: ColumnDef<Todo>[] = [
     accessorKey: "Action",
     header: "Action",
     cell: ({ row }) => {
-      return <TodoEditDialog todo={row.original} />;
+      return (
+        <div className="flex w-fit gap-x-4">
+          <TodoEditDialog todo={row.original} />
+          <TodoDeletionDialog todo={row.original} />
+        </div>
+      );
     },
   },
 ];

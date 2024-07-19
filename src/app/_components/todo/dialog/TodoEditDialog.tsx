@@ -8,12 +8,12 @@ import {
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { Button } from "~/components/ui/button";
-import { Todo, todoFormSchema } from "./const";
+import { Todo, todoFormSchema } from "../const";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { api } from "~/trpc/react";
 import toast from "react-hot-toast";
 import { Spinner } from "~/components/spinner";
-import { TodoEditForm } from "./form/TodoEditForm";
+import { TodoEditForm } from "../form/TodoEditForm";
 
 type Props = { todo: Todo };
 export function TodoEditDialog(props: Props) {
