@@ -41,6 +41,7 @@ export function DataTable<TData, TValue>({
     },
   });
 
+  console.log(table.getRowModel().rows?.length > 0);
   return (
     // - rounded-md -> rounded-lg
     // - adjust border for scroll indication
@@ -70,7 +71,7 @@ export function DataTable<TData, TValue>({
             ))}
           </TableHeader>
           <TableBody>
-            {table.getRowModel().rows?.length ? (
+            {table.getRowModel().rows?.length > 0 ? (
               table.getRowModel().rows.map((row) => (
                 <TableRow
                   key={row.id}
@@ -95,7 +96,7 @@ export function DataTable<TData, TValue>({
                 <TableCell
                   colSpan={columns.length}
                   //- add bg-white and hover:bg-white
-                  className="h-24 text-center hover:bg-transparent"
+                  className="text-0 h-24 text-center text-gray-900 hover:bg-transparent"
                 >
                   沒有記錄
                 </TableCell>

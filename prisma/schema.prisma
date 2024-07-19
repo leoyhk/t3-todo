@@ -20,6 +20,6 @@ model Todo {
     
     title      String
     completeStatus Boolean @default(false)  
-    remarks    String?
+    remarks    String @default("")
 
 }

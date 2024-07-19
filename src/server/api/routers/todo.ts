@@ -20,9 +20,32 @@ export const todoRouter = createTRPCRouter({
       const { title } = input;
       const addedTodo = await ctx.db.todo.create({
         data: {
-          title: title,
+          title,
         },
       });
       return addedTodo;
+    }),
+  edit: publicProcedure
+    .input(
+      z.object({
+        id: z.string(),
+        title: z.string(),
+        completeStatus: z.boolean().optional(),
+        remarks: z.string().optional(),
+      }),
+    )
+    .mutation(async ({ ctx, input }) => {
+      const { title, completeStatus, remarks, id } = input;
+
+      const editedTodo = await ctx.db.todo.update({
+        where: {
+          id,
+        },
+        data: {
+          title: title,
+          completeStatus,
+        },
+      });
+      return editedTodo;
     }),
 });
